@@ -13,8 +13,8 @@ def to(schema: schema_send_email.Sender):
     try:
         send_email = SendEmail(schema.to, schema.subject, schema.message)
         result = send_email.send_email()
-        if result == "Message sent!":
-            return {"status": result}
+        if result == "Message sent successfully!":
+            return {"message": result}
         else:
             raise HTTPException(
                 status_code=status.HTTP_502_BAD_GATEWAY,
