@@ -11,5 +11,5 @@ class RootUserEmail(BaseSettings):
     password: str
 
     class Config:
-        env_file = "../.env"
+        env_file = "../../.env"
         env_file_encoding = 'utf-8'

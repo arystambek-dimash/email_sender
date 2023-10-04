@@ -31,13 +31,14 @@ git clone https://github.com/arystambek-dimash/email_sender.git
 
 ```bash
 poetry install 
+pip install logging
 poetry shell
 ```
 
 3. __Usage__
     1. __Run the FastAPI application__
    ```bash
-    uvicorn main:app --reload
+    uvicorn app.main:app --reload
     ```
     2. __Open your web browser and go to http://localhost:8000.__
     3. __Follow the on-screen instructions to send an email.__

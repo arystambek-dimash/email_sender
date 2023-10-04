@@ -12,7 +12,6 @@ uvicorn = "^0.23.2"
 pydantic = {extras = ["email"], version = "^2.4.2"}
 pydantic-settings = "^2.0.3"
 python-dotenv = "^1.0.0"
-logging = "^0.4.9.6"
 pytest = "^7.4.2"
 httpx = "^0.25.0"
 

@@ -1,8 +1,11 @@
 import smtplib
 import logging
 
+from fastapi import status, HTTPException
 from email.mime.text import MIMEText
-from config.config import RootUserEmail
+from app.config.config import RootUserEmail
+
+logging.basicConfig(level=logging.INFO, filename="py_log.log", filemode="w")
 
 
 class SendEmail:
@@ -22,10 +25,11 @@ class SendEmail:
             with smtplib.SMTP_SSL(host, port) as smtp_server:
                 smtp_server.login(self.__sender.email, self.__sender.password, initial_response_ok=True)
                 smtp_server.sendmail(self.__sender.email, self.to, self.__msg.as_string())
-            return "Message sent!"
+                logging.info("Message sent successfully!")
+            return "Message sent successfully!"
         except smtplib.SMTPException as e:
             logging.exception(e)
-            raise e
+            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Internal server error")
 
     def __get_host_and_port(self):
         host, port = "smtp.gmail.com", 465
